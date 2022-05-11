@@ -51,10 +51,6 @@ standard_df.head(10)
 
 # Applying PCA to the dataset
 principal_comps = PCA(standard_df, n=2)
-kmeans = KMeans(n_clusters=3).fit(principal_comps)
-centroidi = kmeans.cluster_centers_
-gruppi = kmeans.labels_
-confronto_gruppi = (gruppi,y)
 
 principalDf = pd.DataFrame(data = principal_comps
              , columns = ['principal component 1', 'principal component 2'])
@@ -66,26 +62,6 @@ df[['target']].head()
 finalDf = pd.concat([principalDf, df[['target']]], axis = 1)
 finalDf.head(5)
 
-fig = plt.figure(figsize = (8,8))
-ax = fig.add_subplot(1,1,1) 
-ax.set_xlabel('Principal Component 1', fontsize = 15)
-ax.set_ylabel('Principal Component 2', fontsize = 15)
-ax.set_title('2 Component PCA', fontsize = 20)
-
-targets = ['Iris-setosa', 'Iris-versicolor', 'Iris-virginica']
-colori = ['r', 'g', 'b']
-
-i=0
-for x,y in principal_comps:
-    #if(confronto_gruppi[0][i] != confronto_gruppi[])
-        ax.scatter(x,y,c=colori[gruppi[i]])
-        i=i+1
-
-ax.legend(targets)
-ax.grid()
-
-for x,y in centroidi:
-    ax.plot(x, y, marker="o", markersize=20, markeredgecolor="red", markerfacecolor="yellow")
 
 ##########
 figu = plt.figure(figsize = (8,8))
@@ -105,9 +81,5 @@ for target, color in zip(targets,colori):
 
 ax1.legend(targets)
 ax1.grid()
-
-for x,y in centroidi:
-    ax1.plot(x, y, marker="o", markersize=20, markeredgecolor="red", markerfacecolor="yellow")
-
 
 plt.show()
