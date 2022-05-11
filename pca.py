@@ -34,7 +34,7 @@ def PCA(scaled_data, n=2):
 
 
 
-# Load the Sample Dataset
+# Carichiamo il dataset
 df = pd.read_csv('iris.csv'
                  , names=['sepal length','sepal width','petal length','petal width','target'])
 features = ['sepal length', 'sepal width', 'petal length', 'petal width']
@@ -45,11 +45,11 @@ y = df.loc[:,['target']].values
 sample_df = pd.DataFrame(data=x,columns=features)
   
 
-#Performing Standardization
+#Standardiziamo e centriamo i nostri dati
 standard_df = (sample_df - sample_df.mean()) / sample_df.std()
 standard_df.head(10)
 
-# Applying PCA to the dataset
+# Applichiamo il PCA
 principal_comps = PCA(standard_df, n=2)
 
 principalDf = pd.DataFrame(data = principal_comps
@@ -62,8 +62,6 @@ df[['target']].head()
 finalDf = pd.concat([principalDf, df[['target']]], axis = 1)
 finalDf.head(5)
 
-
-##########
 figu = plt.figure(figsize = (8,8))
 ax1 = figu.add_subplot(1,1,1) 
 ax1.set_xlabel('Principal Component 1', fontsize = 15)
