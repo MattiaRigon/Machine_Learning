@@ -1,11 +1,7 @@
-# Import Statements
-from calendar import c
-from turtle import color
+# Librerie
 import pandas as pd
 import numpy as np
-from pyparsing import col
 import matplotlib.pyplot as plt
-from sklearn.cluster import KMeans
 
 
 
